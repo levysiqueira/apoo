@@ -41,5 +41,7 @@ Existem várias outras histórias, omitidas por simplicidade.
 - [Diagrama de sequência](Sequencia.png) para H1 e H2, considerando 1 material e solicitação não passando da quota.
 - [Código fonte](src/) referente ao diagrama de sequência
 
+Diagramas foram feitos usando o [PlantUML](https://plantuml.com/)
+
 
 
