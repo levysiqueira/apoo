@@ -1,0 +1,54 @@
+@startuml Sequencia
+skinparam style strictuml
+autoactivate on
+
+actor Funcionario
+participant Tela as t
+participant Controlador as c
+participant Funcionario as f
+participant "s:Solicitacao" as s
+participant Item as i
+participant Almoxarifado as a
+participant FuncionarioDoAlmoxarifado as fa
+participant Mailer as m 
+
+Funcionario -> t : solicita materiais
+    t -> c : getMateriais()
+        c -> a : getMateriais()
+        return
+    return
+return
+
+Funcionario -> t : seleciona material (id, \nquantidade)
+    t -> c : solicita(id, \nquantidade)
+        c -> a : getMaterial(id)
+        return m
+        c -> f : solicita(m, quantidade)
+            create s
+            f -> s : <<create>>
+            return
+            f -> s : adicionar(m, quantidade)
+                create i
+                s -> i : new(m, quantidade)
+                return
+            return
+            f -> s : getValor()
+            return
+            f -> f : getSolicitacoesDoMes()
+            return
+            f -> f : getArea()
+            return a
+            f -> a : getQuota()
+            return
+            f -> s : confirma()
+                s -> a : avisa(s)
+                    a -> fa : avisa(s)
+                        fa -> m : enviar(s)
+                        return
+                    return
+                return
+            return
+        return
+    return
+return
+@enduml

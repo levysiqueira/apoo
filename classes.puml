@@ -1,0 +1,43 @@
+@startuml Classes
+skinparam style strictuml
+skinparam linetype ortho
+left to right direction
+
+class Solicitacao {
+  data: Date
+  aprovada: boolean
+}
+
+class Item {
+  quantidade: int
+}
+
+class Material {
+  código: int
+  nome: String
+  preço: double
+}
+
+class Area {
+  quota: double
+}
+
+class Funcionario {
+}
+
+class FuncionarioAlmoxarifado {
+  email: String
+}
+
+class Gerente {
+}
+
+Material "1" -- "*" Item
+Item "*" --* Solicitacao
+Solicitacao "*" -- "1" Funcionario: < faz
+Funcionario "*" ---* "1" Area: trabalha em >
+Gerente "1" -- "1" Area: gerencia >
+Gerente -|> Funcionario
+Funcionario <|- FuncionarioAlmoxarifado
+
+@enduml
